@@ -17,12 +17,25 @@ public class PlayerAnimatorController : MonoBehaviour
     }
     private void Start() {
         animatorController.SetBool(IS_JALAN, false);
+        animatorController.SetBool(IS_LONCAT, false);
+        animatorController.SetBool(IS_HURT, false);
         playerMovement.OnLoncat += playerMove_OnLoncat;
         playerMovement.OnGround += playerMove_OnGround;
         
         playerMovement.OnHurt += playerMove_OnHurt;
         playerMovement.OnNotHurt += playerMove_OnNotHurt;
         // Debug.Log(player.getIsJalan());
+
+        playerMovement.OnPowerUp += playerMove_OnPowerUp;
+        playerMovement.OnPowerOff += playerMove_OnPowerOff;
+    }
+
+
+    private void playerMove_OnPowerUp(object sender, System.EventArgs e){
+        GetComponent<SpriteRenderer>().color = Color.blue;
+    }
+    private void playerMove_OnPowerOff(object sender, System.EventArgs e){
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     private void playerMove_OnLoncat(object sender, System.EventArgs e){

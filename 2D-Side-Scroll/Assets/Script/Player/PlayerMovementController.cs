@@ -10,7 +10,7 @@ public class PlayerMovementController : MonoBehaviour
 
     [SerializeField]private float kecepatanPlayer, loncatPower;
 
-
+    private float saveLoncatPower;
     private bool isJalan, isOnGround, isHurt;
 
     
@@ -26,7 +26,7 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField]private LayerMask layerGround;
 
     //event
-    public event EventHandler OnLoncat, OnGround, OnHurt, OnNotHurt;
+    public event EventHandler OnLoncat, OnGround, OnHurt, OnNotHurt, OnPowerUp, OnPowerOff;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -36,6 +36,7 @@ public class PlayerMovementController : MonoBehaviour
         isOnGround = false;
         isJalan = false;
         isHurt = false;
+        
     }
     private void Update()
     {
@@ -74,8 +75,10 @@ public class PlayerMovementController : MonoBehaviour
         if(gameInput.GetInputJump() && coll.IsTouchingLayers(layerGround)){
             // Debug.Log("Yes");
             isOnGround = false;
+            
             OnLoncat?.Invoke(this,EventArgs.Empty);
             rb.AddForce(new Vector2(0, 1) * loncatPower * PERKALIAN_LONCAT);
+            
         }
     }
 
@@ -105,5 +108,23 @@ public class PlayerMovementController : MonoBehaviour
     }
     public bool GetIsOnGround(){
         return isOnGround;
+    }
+
+    // public void ChangeKecepatan(float change){
+    //     saveKecepatanPlayer = kecepatanPlayer;
+    //     kecepatanPlayer = change;
+    // }
+    public void ChangeLoncatPower(float change){
+        saveLoncatPower = loncatPower;
+        loncatPower += change;
+        OnPowerUp?.Invoke(this,EventArgs.Empty);
+        StartCoroutine(ResetPower());
+    }
+
+    private IEnumerator ResetPower(){
+        yield return new WaitForSeconds(10);
+        loncatPower = saveLoncatPower;
+        OnPowerOff?.Invoke(this,EventArgs.Empty);
+
     }
 }

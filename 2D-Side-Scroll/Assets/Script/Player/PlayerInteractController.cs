@@ -8,28 +8,38 @@ public class PlayerInteractController : MonoBehaviour
     [SerializeField]private PlayerIdentity playerIdentity;
     [SerializeField]private PlayerMovementController playerMovement;
     private const string COLLECTABLE = "Collectable";
+    private const string POWER_UP = "PowerUp";
     private const string ENEMY = "Enemy";
+    // private const string FINISH = "Finish";
 
 
     public event EventHandler OnCollectCherry;
+    
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag(COLLECTABLE)){
             int point = other.GetComponent<CollectableController>().GetCollectablePoint();
             playerIdentity.changeCherryScore(point);
-            Destroy(other.gameObject);
-            
             OnCollectCherry?.Invoke(this,EventArgs.Empty);
+            Destroy(other.gameObject);
         }
+        if(other.gameObject.CompareTag(POWER_UP)){
+            float powerUpPower = other.GetComponent<PowerUp>().GetPowerUpPower();
+            playerMovement.ChangeLoncatPower(powerUpPower);
+            Destroy(other.gameObject);
+        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.CompareTag(ENEMY)){
             
-            if(!playerMovement.GetIsOnGround()){
+            if(!playerMovement.GetIsOnGround() && other.gameObject.transform.position.y <= transform.position.y){
                 // int point = other.gameObject.GetComponent<CollectableController>().GetCollectablePoint();
                 // playerIdentity.changeCherryScore(point);
+                // Debug.Log("Poiii");
                 playerMovement.GotKillEnemyForce();
-                Destroy(other.gameObject);
+                other.gameObject.GetComponent<EnemyController>().death();
+                // Destroy(other.gameObject);
             }
             else{
                 

@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 4616242618477701719}
   - component: {fileID: 4616242618477701713}
   - component: {fileID: 4616242618477701712}
-  - component: {fileID: 4616242618477701715}
-  - component: {fileID: 4616242618477701714}
+  - component: {fileID: 6695263885637841361}
   m_Layer: 0
   m_Name: Frog_Enemy
   m_TagString: Enemy
@@ -83,7 +82,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0828362, y: 1.1807353}
   m_EdgeRadius: 0
---- !u!114 &4616242618477701715
+--- !u!114 &6695263885637841361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,24 +91,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 4616242618477701718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1c949b276c92c34eb70219d23210852, type: 3}
+  m_Script: {fileID: 11500000, guid: df7748ece4e42fa47bacab3a46695342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDamage: 2
   hurtForce: 15
---- !u!114 &4616242618477701714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4616242618477701718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c35d7cd97433154ab60efeed4e744fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectablePoint: 3
+  pointKiri: 0
+  pointKanan: 0
+  jarakLoncat: 0
+  tinggiLoncat: 0
+  layerGround:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &4616242618968138051
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,6 +113,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4616242618968137916}
   - component: {fileID: 4616242618968137917}
+  - component: {fileID: 4035629523869796441}
+  - component: {fileID: 6502550311863653038}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -194,3 +189,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4035629523869796441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616242618968138051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7888baed35b9249a9583b7a2aa7779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frogController: {fileID: 6695263885637841361}
+--- !u!95 &6502550311863653038
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616242618968138051}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d8c32b214c6a4ad47a9e50d2eebcc526, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
