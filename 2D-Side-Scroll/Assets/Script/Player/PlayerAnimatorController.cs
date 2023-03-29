@@ -9,6 +9,7 @@ public class PlayerAnimatorController : MonoBehaviour
     private const string IS_JALAN = "IsJalan";
     private const string IS_LONCAT = "IsLoncat";
     private const string IS_HURT = "IsHurt";
+    private const string IS_CLIMB = "IsClimb";
 
 
     private void Awake() {
@@ -19,6 +20,7 @@ public class PlayerAnimatorController : MonoBehaviour
         animatorController.SetBool(IS_JALAN, false);
         animatorController.SetBool(IS_LONCAT, false);
         animatorController.SetBool(IS_HURT, false);
+        animatorController.SetBool(IS_CLIMB, false);
         playerMovement.OnLoncat += playerMove_OnLoncat;
         playerMovement.OnGround += playerMove_OnGround;
         
@@ -28,8 +30,19 @@ public class PlayerAnimatorController : MonoBehaviour
 
         playerMovement.OnPowerUp += playerMove_OnPowerUp;
         playerMovement.OnPowerOff += playerMove_OnPowerOff;
+
+        playerMovement.OnClimb += playerMove_OnClimb;
+        playerMovement.OnNotClimb += playerMove_OnNotClimb;
     }
 
+    private void playerMove_OnClimb(object sender, System.EventArgs e){
+        animatorController.SetBool(IS_CLIMB, true);
+        // animatorController.speed = 1f;
+    }
+    private void playerMove_OnNotClimb(object sender, System.EventArgs e){
+        animatorController.SetBool(IS_CLIMB, false);
+        // animatorController.speed = 1f;
+    }
 
     private void playerMove_OnPowerUp(object sender, System.EventArgs e){
         GetComponent<SpriteRenderer>().color = Color.blue;
@@ -54,6 +67,8 @@ public class PlayerAnimatorController : MonoBehaviour
 
     private void Update(){
         // Debug.Log(player.getIsJalan());
+
+        //kalooo climb
         animatorController.SetBool(IS_JALAN, playerMovement.GetIsJalan());
         
     }

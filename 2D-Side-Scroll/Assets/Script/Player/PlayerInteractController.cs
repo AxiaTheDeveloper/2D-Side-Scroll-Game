@@ -56,7 +56,7 @@ public class PlayerInteractController : MonoBehaviour
                 }
                 
                 
-                Debug.Log(playerIdentity.GetHealth());
+                // Debug.Log(playerIdentity.GetHealth());
             }
             
         }

@@ -8,6 +8,7 @@ TagManager:
   - Collectable
   - Enemy
   - PowerUp
+  - Ladder
   layers:
   - Default
   - TransparentFX
@@ -47,6 +48,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 2407024121
+    locked: 0
+  - name: Middleground
+    uniqueID: 3557086745
     locked: 0
   - name: Entity
     uniqueID: 543835117

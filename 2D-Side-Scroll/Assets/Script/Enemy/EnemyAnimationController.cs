@@ -25,7 +25,7 @@ public class EnemyAnimationController : MonoBehaviour
         SoundEffectManager.Instance.PlayEnemyExplosion();
     }
     protected void enemyController_OnDeath(object sender, System.EventArgs e){
-        Debug.Log("Boom");
+        // Debug.Log("Boom");
         if(animatorController){
             animatorController.SetTrigger(IS_DEATH);
         }
