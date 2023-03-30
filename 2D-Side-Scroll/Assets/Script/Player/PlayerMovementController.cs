@@ -27,7 +27,7 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField]private LayerMask layerGround;
 
     //event
-    public event EventHandler OnLoncat, OnGround, OnHurt, OnNotHurt, OnPowerUp, OnPowerOff, OnClimb, OnNotClimb;
+    public event EventHandler OnLoncat, OnGround, OnHurt, OnNotHurt, OnPowerUp, OnPowerOff, OnClimb, OnNotClimb, OnClimbMove, OnClimbNotMove;
 
     public Ladder ladder;
 
@@ -50,7 +50,6 @@ public class PlayerMovementController : MonoBehaviour
             if(!isHurt){
                 Move();
                 if(!canClimb){
-                    OnNotClimb?.Invoke(this,EventArgs.Empty);
                     Jump();
                     if(atBottomLadder){
                         OnGround?.Invoke(this,EventArgs.Empty);
@@ -100,14 +99,17 @@ public class PlayerMovementController : MonoBehaviour
         if((keyInputY == 1 && !atTopLadder) || (keyInputY == -1 && !atBottomLadder)){
             // Debug.Log("Go" + keyInputY);
             transform.position += (arahGerakLadder * climbSpeed * Time.deltaTime);
+            OnClimbMove?.Invoke(this,EventArgs.Empty);
         }
         else{
             rb.velocity = Vector2.zero;
+            OnClimbNotMove?.Invoke(this,EventArgs.Empty);
         }
         if(gameInput.GetInputJump()){
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             rb.gravityScale = normalGravity;
             canClimb = false;
+            OnNotClimb?.Invoke(this,EventArgs.Empty);
             OnLoncat?.Invoke(this,EventArgs.Empty);
             if(atTopLadder){
                 rb.AddForce(new Vector2(0, 1) * loncatPower * PERKALIAN_LONCAT);
@@ -165,7 +167,12 @@ public class PlayerMovementController : MonoBehaviour
     }
     public void ChangeCanClimb(bool change){
         canClimb = change;
-        
+        if(canClimb){
+            OnClimb?.Invoke(this,EventArgs.Empty);
+        }
+        else{
+            OnNotClimb?.Invoke(this,EventArgs.Empty);
+        }
     }
     public void ChangeAtBottom(bool change){
         atBottomLadder = change;
@@ -178,10 +185,7 @@ public class PlayerMovementController : MonoBehaviour
         isJalan = false;
     }
 
-    // public void ChangeKecepatan(float change){
-    //     saveKecepatanPlayer = kecepatanPlayer;
-    //     kecepatanPlayer = change;
-    // }
+
     public void ChangeLoncatPower(float change){
         saveLoncatPower = loncatPower;
         loncatPower += change;

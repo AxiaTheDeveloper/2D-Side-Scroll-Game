@@ -51155,6 +51155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2117118639}
   - component: {fileID: 2117118640}
+  - component: {fileID: 2117118641}
   m_Layer: 5
   m_Name: DeathUI
   m_TagString: Untagged
@@ -51199,6 +51200,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIdentity: {fileID: 838642789}
   restartButton: {fileID: 989399089}
+--- !u!225 &2117118641
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117118638}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2128499973
 GameObject:
   m_ObjectHideFlags: 0

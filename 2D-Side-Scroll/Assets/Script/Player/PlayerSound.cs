@@ -7,9 +7,7 @@ public class PlayerSound : MonoBehaviour
     [SerializeField]private SoundEffectManager soundEffect;
     [SerializeField]private PlayerMovementController playerMovement;
     [SerializeField]private PlayerInteractController playerInteract;
-    // private void Awake() {
-    //     soundEffect = SoundEffectManager.Instance;
-    // }
+
     private void Start() {
         playerMovement.OnLoncat += playerMovement_OnLoncat;
         playerInteract.OnCollectCherry += playerInteract_OnCollectCherry;

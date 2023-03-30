@@ -13,9 +13,6 @@ public class EnemyAnimationController : MonoBehaviour
         
     }
     
-    private void Start() {
-        // enemyController.OnDeath += enemyController_OnDeath;
-    }
 
     private void Suicide(){
         Destroy(transform.parent.gameObject);

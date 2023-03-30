@@ -34,9 +34,6 @@ public class PlayerInteractController : MonoBehaviour
         if(other.gameObject.CompareTag(ENEMY)){
             
             if(!playerMovement.GetIsOnGround() && other.gameObject.transform.position.y <= transform.position.y){
-                // int point = other.gameObject.GetComponent<CollectableController>().GetCollectablePoint();
-                // playerIdentity.changeCherryScore(point);
-                // Debug.Log("Poiii");
                 playerMovement.GotKillEnemyForce();
                 other.gameObject.GetComponent<EnemyController>().death();
                 // Destroy(other.gameObject);
