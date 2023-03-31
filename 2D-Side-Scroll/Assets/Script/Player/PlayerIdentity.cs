@@ -11,6 +11,7 @@ public class PlayerIdentity : MonoBehaviour
     private const string PLAYER_PREFS_PLAYER_CHERRY = "PlayerCherry";
 
     public event EventHandler OnGameOver;
+    [SerializeField]private ScrollGameManager gameManager;
     private void Awake() {
         Instance = this;
         if(PlayerPrefs.HasKey(PLAYER_PREFS_PLAYER_DEAD_HEALTH)){
@@ -32,9 +33,9 @@ public class PlayerIdentity : MonoBehaviour
     }
     public void changeHealth(int changes){
         health+= changes;
-        if(health <= 0){
+        if(health <= 0 && gameManager.isGameStart()){
             health = 0;
-            ScrollGameManager.Instance.gameEnding();
+            gameManager.gameEnding();
             OnGameOver?.Invoke(this, EventArgs.Empty);
         }
     }

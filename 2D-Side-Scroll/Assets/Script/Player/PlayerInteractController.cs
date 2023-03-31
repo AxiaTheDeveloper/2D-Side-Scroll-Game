@@ -13,7 +13,7 @@ public class PlayerInteractController : MonoBehaviour
     // private const string FINISH = "Finish";
 
 
-    public event EventHandler OnCollectCherry;
+    public event EventHandler OnCollectCherry, OnHit;
     
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag(COLLECTABLE)){
@@ -39,7 +39,8 @@ public class PlayerInteractController : MonoBehaviour
                 // Destroy(other.gameObject);
             }
             else{
-                
+                OnHit?.Invoke(this,EventArgs.Empty);
+                Debug.Log("Jederr");
                 EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
                 int damage = enemy.GetDamage();
                 playerIdentity.changeHealth(-damage);

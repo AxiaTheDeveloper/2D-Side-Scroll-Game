@@ -5870,6 +5870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  gameManager: {fileID: 1538631715}
 --- !u!114 &838642790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5952,6 +5953,7 @@ GameObject:
   - component: {fileID: 884762518}
   - component: {fileID: 884762519}
   - component: {fileID: 884762520}
+  - component: {fileID: 884762521}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -6028,6 +6030,21 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 1022936297}
   m_Damping: 0.5
   m_MaxWindowSize: -1
+--- !u!114 &884762521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884762517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53175f58f2442254f99a15800bf7c4c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeIntensity: 5
+  shakeTime: 1
+  playerInteract: {fileID: 838642790}
 --- !u!4 &916787730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3223942378357769384, guid: 31680bbd4d3241844a5176b91d661605, type: 3}
@@ -6197,6 +6214,8 @@ GameObject:
   - component: {fileID: 989399091}
   - component: {fileID: 989399090}
   - component: {fileID: 989399089}
+  - component: {fileID: 989399093}
+  - component: {fileID: 989399092}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -6307,6 +6326,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989399087}
   m_CullTransparentMesh: 1
+--- !u!114 &989399092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989399087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38923e41d13ce304fb2db02e9c6e0d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &989399093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989399087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 989399092}
+          m_TargetAssemblyTypeName: UIButtonAnimation, Assembly-CSharp
+          m_MethodName: OnHoverButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 989399092}
+          m_TargetAssemblyTypeName: UIButtonAnimation, Assembly-CSharp
+          m_MethodName: OnNotHoverButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1009885287
 GameObject:
   m_ObjectHideFlags: 0
@@ -50747,6 +50823,7 @@ GameObject:
   - component: {fileID: 1931403164}
   - component: {fileID: 1931403163}
   - component: {fileID: 1931403165}
+  - component: {fileID: 1931403166}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -50851,6 +50928,23 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
+--- !u!114 &1931403166
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931403160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &1950350528
 PrefabInstance:
   m_ObjectHideFlags: 0

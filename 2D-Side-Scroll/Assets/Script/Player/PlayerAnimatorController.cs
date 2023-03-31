@@ -43,7 +43,6 @@ public class PlayerAnimatorController : MonoBehaviour
     private void playerMove_OnClimbMove(object sender, System.EventArgs e){
         
         animatorController.speed = 1f;
-        
     }
     private void playerMove_OnClimb(object sender, System.EventArgs e){
         animatorController.SetBool(IS_CLIMB, true);
@@ -79,7 +78,7 @@ public class PlayerAnimatorController : MonoBehaviour
 
     private void Update(){
         // Debug.Log(player.getIsJalan());
-        Debug.Log(animatorController.GetBool(IS_CLIMB));
+        // Debug.Log(animatorController.GetBool(IS_CLIMB));
         //kalooo climb
         animatorController.SetBool(IS_JALAN, playerMovement.GetIsJalan());
         

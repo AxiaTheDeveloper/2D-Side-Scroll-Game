@@ -13,11 +13,11 @@ public class DeathUI : MonoBehaviour
     private CanvasGroup canvas;
     private void Awake() {
         restartButton.onClick.AddListener(() => {
-            
             PlayerIdentity playerIdentity = PlayerIdentity.Instance;
             playerIdentity.saveIdentity(10, 0);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         });
+        
         canvas = GetComponent<CanvasGroup>();
     }
     void Start()
@@ -39,4 +39,6 @@ public class DeathUI : MonoBehaviour
         transform.LeanScale(Vector2.zero, 1f);
         gameObject.SetActive(false);
     }
+
+
 }
