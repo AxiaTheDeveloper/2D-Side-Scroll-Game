@@ -1,5 +1,7 @@
 # 2D-Side-Scroll-Game
 
+[2D Side Scroll Itch.io Link](https://axiathedeveloper.itch.io/2d-side-scroll?secret=Kx5Shvbf3noLILpbEUJnsg4) **(Windows Only)**
+
 IMPLEMENTASI Game Optimization
 - Texture 2D menggunakan filter mode Point(no filter)
 - Penggunaan Couroutine dibanding Invoke()
